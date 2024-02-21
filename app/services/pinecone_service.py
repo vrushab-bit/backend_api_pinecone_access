@@ -28,7 +28,7 @@ def connect_pinecone_init():
         # if does not exist, create index
         pc.create_index(
             pinecone_index_name,
-            dimension=3,  # dimensionality of minilm
+            dimension=8,  # dimensionality of minilm
             metric="cosine",
             spec=spec
         )
