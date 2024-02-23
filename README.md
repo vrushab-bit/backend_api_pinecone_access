@@ -10,6 +10,8 @@ pip install -r requirements.txt
 
 ```
 
+Rename .env.bak to .env and populate the required secrets
+
 ```
 python run.py
 ```
