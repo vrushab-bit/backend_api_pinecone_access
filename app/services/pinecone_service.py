@@ -2,15 +2,13 @@ import os
 from pinecone import Pinecone, ServerlessSpec, PodSpec
 import time
 
-# use_serverless = os.environ.get("USE_SERVERLESS", "False").lower() == "true"
 use_serverless = True
-# api_key = os.environ['PINECONE_API_KEY'] or 'PINECONE_API_KEY'
-api_key = "2420befc-9b06-4c28-870d-942519746ce8"
-environment = os.environ.get('PINECONE_ENVIRONMENT') or 'PINECONE_ENVIRONMENT'
-# print(api_key)
+
+api_key = os.environ.get('PINECONE_API_KEY')
+environment = os.environ.get('PINECONE_ENVIRONMENT') or 'us-west-2'
 
 
-pinecone_index_name = "motion-ask"
+pinecone_index_name = os.environ.get("INDEX_NAME")
 
 
 def connect_pinecone_init():
@@ -28,7 +26,7 @@ def connect_pinecone_init():
         # if does not exist, create index
         pc.create_index(
             pinecone_index_name,
-            dimension=8,  # dimensionality of minilm
+            dimension=1536,  # dimensionality of minilm
             metric="cosine",
             spec=spec
         )
